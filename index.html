@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procrastination Buster ⚡</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    .container {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 2.5em;
+    }
+    
+    .subtitle {
+      color: #666;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    label {
+      display: block;
+      color: #333;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 1em;
+      font-family: inherit;
+      transition: border-color 0.3s;
+    }
+    
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 20px;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .result {
+      margin-top: 30px;
+      padding: 20px;
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      border-radius: 8px;
+      display: none;
+    }
+    
+    .result.show {
+      display: block;
+    }
+    
+    .result h3 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+    
+    .result p {
+      color: #555;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ Procrastination Buster</h1>
+    <p class="subtitle">Stop overthinking. Make a decision.</p>
+    
+    <form id="form">
+      <div class="form-group">
+        <label for="question">What are you procrastinating on?</label>
+        <input 
+          type="text" 
+          id="question" 
+          placeholder="e.g., Should I start that project?" 
+          required
+        >
+      </div>
+      
+      <div class="form-group">
+        <label for="details">Tell me more (optional)</label>
+        <textarea 
+          id="details" 
+          placeholder="What's holding you back? What's the worst that could happen?"
+        ></textarea>
+      </div>
+      
+      <button type="submit">🎲 Make a Decision</button>
+    </form>
+    
+    <div class="result" id="result">
+      <h3>🎯 Here's your answer:</h3>
+      <p id="answer"></p>
+    </div>
+  </div>
+  
+  <script>
+    const responses = [
+      "Yes, do it! The best time was yesterday, the second best is now. 🚀",
+      "No, don't do it. You have better priorities. Focus on those instead. 📌",
+      "Do it! You'll feel amazing once it's done. ✨",
+      "Wait, gather more information first. You're not ready yet. 🤔",
+      "JUST DO IT! Stop overthinking. Action beats perfection. 💪",
+      "No. Give yourself a break. Rest is productive too. 😴",
+      "Do it right now, before you change your mind! ⏰",
+      "Not yet. Build momentum first with smaller wins. 🎯",
+      "Yes! You'll learn something valuable either way. 📚",
+      "No, delegate it. You don't have to do everything. 🤝"
+    ];
+    
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const question = document.getElementById('question').value;
+      const randomIndex = Math.floor(Math.random() * responses.length);
+      const answer = responses[randomIndex];
+      
+      document.getElementById('answer').textContent = answer;
+      document.getElementById('result').classList.add('show');
+      
+      // Scroll to result
+      setTimeout(() => {
+        document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
