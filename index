@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Procrastination Buster</title>
+
+<style>
+body{
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+margin-top:120px;
+}
+
+input{
+padding:10px;
+width:260px;
+border:none;
+border-radius:6px;
+}
+
+button{
+padding:10px 20px;
+margin-left:10px;
+border:none;
+background:#22c55e;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+
+#countdown{
+margin-top:40px;
+font-size:40px;
+font-weight:bold;
+}
+
+#result{
+margin-top:20px;
+font-size:26px;
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>⚡ Procrastination Buster</h1>
+
+<p>What task are you avoiding?</p>
+
+<input id="task" placeholder="Example: Study DSA">
+
+<button onclick="start()">Push Me</button>
+
+<div id="countdown"></div>
+<div id="result"></div>
+
+<script>
+
+function start(){
+
+let task = document.getElementById("task").value;
+
+if(task === ""){
+task = "your task";
+}
+
+let time = 5;
+
+document.getElementById("result").innerText = "";
+
+let timer = setInterval(function(){
+
+document.getElementById("countdown").innerText = time;
+
+time--;
+
+if(time < 0){
+
+clearInterval(timer);
+
+document.getElementById("countdown").innerText = "";
+
+document.getElementById("result").innerText =
+"🚀 GO START: " + task;
+
+}
+
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>
